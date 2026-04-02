@@ -35,7 +35,7 @@ SELECT departmentid AS "Department Code ",
  SUM(salary) AS "Total Salary "
  FROM DEPARTMENT WHERE MANAGERID = '103' GROUP BY departmentid ;
 
-SELECT departmentid, COUNT(*) AS 'No. of Employees'
+SELECT departmentid AS 'TESTSTRING', COUNT(*) AS 'No. of Employees'
 FROM DEPARTMENT GROUP BY departmentid
 HAVING COUNT(*) > 2 ;
 
