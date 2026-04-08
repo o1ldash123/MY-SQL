@@ -1,20 +1,3 @@
-/*Mall Algorithm
-
-
-
-
-
-
-
-
-Most bought items Algorithm
-
-
-
-5. select  items with  category of furniture
-6. select items with a low quantity level
-7. select quantity levels with a very high quantity level*/
-
 DROP TABLE IF EXISTS Customers;
 DROP TABLE IF EXISTS Items;
 CREATE TABLE IF NOT EXISTS Customers(
@@ -98,33 +81,40 @@ SELECT Name AS "Customers who bought shoes" , PurchasedItem , TotalPrice
 FROM Customers
 WHERE PurchasedItem = 'Shoes' ;
 
-SELECT Name AS "Customers who visited in the morning" , PurchasedItem , TotalPrice
+SELECT Name AS "Customers who visited in the morning" , PurchasedItem , TotalPrice , Time
 FROM Customers
 WHERE Time = 'Morning' ;
 
-SELECT Name AS "Customers who paid with Card" , PurchasedItem , TotalPrice
+SELECT Name AS "Customers who paid with Card" , PurchasedItem , TotalPrice , PaymentMethod
 FROM Customers
 WHERE PaymentMethod = 'Card' ;
 
-SELECT Name AS "Customers who paid with Bitcoin" , PurchasedItem , TotalPrice
-FROM Customers
-WHERE PaymentMethod = 'Bitcoin' ;
+    SELECT Name AS "Customers who paid with Bitcoin" , PurchasedItem , TotalPrice , PaymentMethod
+    FROM Customers
+    WHERE PaymentMethod = 'Bitcoin' ;
 
-SELECT Year AS "Customers who visited in 2020" , Name , PurchasedItem , TotalPrice
+SELECT Name AS "Customers who visited in 2020" , Name , PurchasedItem , TotalPrice , Time , Year
 FROM Customers
 WHERE Year = 2020 ;
 
 
 SELECT Name AS "Most Items on Demand" , OnDemandRating AS "Demand Rate" ,Category , Price
 FROM Items 
-WHERE OnDemandRating >= 4.5
+WHERE OnDemandRating >= 4
 ORDER BY OnDemandRating DESC;
 
-SELECT Name AS "Food Items" , Price , QuantityLevel , OnDemandRating
+SELECT Name AS "Accessories" , Price , QuantityLevel , OnDemandRating
 FROM Items
-WHERE Category = 'Food' ;
+WHERE Category = 'Accessories' ;
 
-SELECT Name AS "Furniture Items" , Price , QuantityLevel , OnDemandRating
+SELECT Name AS "Low in Stock Items" , Price , QuantityLevel , OnDemandRating
+FROM Items
+WHERE QuantityLevel = 'Low' ;
+
+SELECT Name AS "High in Stock Items" , Price , QuantityLevel , OnDemandRating
+FROM Items
+WHERE QuantityLevel = 'High' OR QuantityLevel = 'Very High' ;
+
 
 
 
